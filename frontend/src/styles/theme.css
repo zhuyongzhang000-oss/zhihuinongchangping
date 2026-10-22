@@ -1,0 +1,144 @@
+/* 布面风格：纸面做底，侧栏和重点卡用布面（田野绿 + 麦穗金）。
+   字体只用系统自带的（国内打开不用等字体）。日间 / 夜间两套色，html.dark 切换。 */
+:root {
+  --desk: #dcd7cb; --paper: #f7f4ed; --tint: #ece7dd; --line: #ddd6c8;
+  --text: #2e302b; --sub: #66645b; --faint: #8f8b80;
+  --ok: #4f7a45; --okbg: #e2ebd9; --bad: #b5482a; --badbg: #f4e0d7;
+  --warn: #946812; --warnbg: #f2e8cf; --info: #48616f; --infobg: #e2e9ec;
+  --cloth: #4f6b4a; --cloth-deep: #435c3f; --on-cloth: #f1efe6; --ink: #f2d49b; --acc: #4a6741;
+  --chart: #3b7d34; --chart-soft: rgba(59, 125, 52, .14);
+  --scrim: rgba(36, 32, 26, .42);
+  --r: 14px; --r-s: 10px;
+  --f-body: "PingFang SC", "Microsoft YaHei UI", "Microsoft YaHei", "Noto Sans SC", "Source Han Sans SC", "Hiragino Sans GB", system-ui, sans-serif;
+  --f-num: "SF Pro Text", "Segoe UI", "Helvetica Neue", Roboto, system-ui, sans-serif;
+  --f-code: Consolas, "SF Mono", Menlo, "DejaVu Sans Mono", monospace;
+  --linen: repeating-linear-gradient(0deg, rgba(0,0,0,.035) 0 1px, transparent 1px 3px),
+           repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px);
+  color-scheme: light;
+
+  /* Element Plus 跟着走 */
+  --el-color-primary: #4a6741;
+  --el-color-primary-light-3: #80957a;
+  --el-color-primary-light-5: #a4b3a0;
+  --el-color-primary-light-7: #c9d1c6;
+  --el-color-primary-light-8: #dbe1d9;
+  --el-color-primary-light-9: #edf0ec;
+  --el-color-primary-dark-2: #3b5234;
+  --el-bg-color: var(--paper);
+  --el-bg-color-overlay: var(--paper);
+  --el-bg-color-page: var(--desk);
+  --el-fill-color-blank: var(--paper);
+  --el-fill-color-light: var(--tint);
+  --el-fill-color-lighter: var(--tint);
+  --el-border-color: var(--line);
+  --el-border-color-light: var(--line);
+  --el-border-color-lighter: var(--line);
+  --el-text-color-primary: var(--text);
+  --el-text-color-regular: var(--text);
+  --el-text-color-secondary: var(--sub);
+  --el-text-color-placeholder: var(--faint);
+  --el-border-radius-base: 10px;
+  --el-font-family: var(--f-body);
+}
+html.dark {
+  --desk: #1b1c19; --paper: #24261f; --tint: #2e302a; --line: #3a3c35;
+  --text: #e6dfd0; --sub: #aaa497; --faint: #858174;
+  --ok: #9cc58f; --okbg: #2c3a27; --bad: #ec8a66; --badbg: #45291f;
+  --warn: #e2b55c; --warnbg: #3d3320; --info: #a3bfcf; --infobg: #263038;
+  --cloth: #3d5239; --cloth-deep: #34472f; --on-cloth: #ece6d6; --ink: #e9c98a; --acc: #8fb57e;
+  --chart: #5ea54f; --chart-soft: rgba(94, 165, 79, .16);
+  --scrim: rgba(0, 0, 0, .55);
+  color-scheme: dark;
+
+  --el-color-primary: #6e9a5c;
+  --el-color-primary-light-3: #58774a;
+  --el-color-primary-light-5: #49603e;
+  --el-color-primary-light-7: #3a4931;
+  --el-color-primary-light-8: #333d2b;
+  --el-color-primary-light-9: #2b3225;
+  --el-color-primary-dark-2: #8bae7d;
+  --el-bg-color: var(--paper);
+  --el-bg-color-overlay: var(--paper);
+  --el-bg-color-page: var(--desk);
+  --el-fill-color-blank: var(--paper);
+  --el-fill-color-light: var(--tint);
+  --el-fill-color-lighter: var(--tint);
+  --el-border-color: var(--line);
+  --el-border-color-light: var(--line);
+  --el-border-color-lighter: var(--line);
+  --el-text-color-primary: var(--text);
+  --el-text-color-regular: var(--text);
+  --el-text-color-secondary: var(--sub);
+  --el-text-color-placeholder: var(--faint);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--desk); color: var(--text); font-family: var(--f-body);
+  font-size: 14px; line-height: 1.6; -webkit-font-smoothing: antialiased;
+}
+a { color: var(--acc); text-decoration: none; }
+.num { font-family: var(--f-num); font-variant-numeric: tabular-nums; }
+.mono { font-family: var(--f-code); letter-spacing: .02em; }
+.muted { color: var(--sub); }
+.faint { color: var(--faint); }
+
+/* ───── 布面块 ───── */
+.cloth { background-color: var(--cloth); background-image: var(--linen); color: var(--on-cloth); }
+
+/* ───── 纸面卡片 ───── */
+.card {
+  background: var(--paper); border: 1px solid var(--line); border-radius: var(--r);
+  padding: 18px 20px;
+}
+.card + .card { margin-top: 16px; }
+.card.cloth { background-color: var(--cloth); background-image: var(--linen); border-color: transparent; color: var(--on-cloth); }
+.card-title { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 14px; }
+.card-title h3 { margin: 0; font-size: 15px; font-weight: 600; }
+.card-title .hint { font-size: 12px; color: var(--faint); }
+
+/* 页头 */
+.page-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.page-head h2 { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: .02em; }
+.page-head p { margin: 2px 0 0; color: var(--sub); font-size: 13px; }
+
+/* 查询条 */
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
+.toolbar .el-input, .toolbar .el-select { width: 180px; }
+.toolbar .grow { flex: 1; }
+.pager { display: flex; justify-content: flex-end; margin-top: 14px; }
+
+/* 状态小标签：颜色 + 文字，不只靠颜色 */
+.pill {
+  display: inline-flex; align-items: center; gap: 4px; padding: 0 9px; height: 22px;
+  border-radius: 999px; font-size: 12px; white-space: nowrap; background: var(--tint); color: var(--sub);
+}
+.pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.pill.ok { background: var(--okbg); color: var(--ok); }
+.pill.bad { background: var(--badbg); color: var(--bad); }
+.pill.warn { background: var(--warnbg); color: var(--warn); }
+.pill.info { background: var(--infobg); color: var(--info); }
+.pill.plain::before { display: none; }
+
+/* 表格放在纸面上 */
+.el-table { --el-table-header-bg-color: var(--tint); --el-table-tr-bg-color: var(--paper); --el-table-row-hover-bg-color: var(--tint);
+  --el-table-border-color: var(--line); --el-table-bg-color: var(--paper); border-radius: var(--r-s); }
+.el-table th.el-table__cell { font-weight: 600; color: var(--sub); }
+.el-dialog { border-radius: var(--r); }
+.el-drawer { background: var(--paper); }
+.el-button { font-weight: 500; }
+
+/* 详情里的键值对 */
+.kv { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px 20px; }
+.kv div { min-width: 0; }
+.kv dt { font-size: 12px; color: var(--faint); margin: 0; }
+.kv dd { margin: 2px 0 0; word-break: break-all; }
+
+.empty { padding: 30px 0; text-align: center; color: var(--faint); }
+
+@media (max-width: 640px) {
+  .card { padding: 14px; }
+  .toolbar .el-input, .toolbar .el-select { width: 100%; }
+  .toolbar .el-button { flex: 1; }
+}

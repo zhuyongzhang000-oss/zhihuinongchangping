@@ -1,0 +1,32 @@
+server:
+  port: ${SERVER_PORT:8080}
+
+spring:
+  application:
+    name: agri-trace
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${DB_HOST:localhost}:${DB_PORT:3306}/${DB_NAME:agri_trace}?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: ${DB_USER:root}
+    password: ${DB_PASSWORD:root}
+  jackson:
+    time-zone: Asia/Shanghai
+    default-property-inclusion: always
+
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+  global-config:
+    banner: false
+
+app:
+  jwt:
+    # 生产环境务必通过环境变量 JWT_SECRET 覆盖，至少 32 个字符
+    secret: ${JWT_SECRET:agri-trace-dev-secret-please-change-me-2026}
+    expire-hours: ${JWT_EXPIRE_HOURS:24}
+  cors:
+    allowed-origins: ${CORS_ORIGINS:*}
+
+logging:
+  level:
+    com.agritrace: info
